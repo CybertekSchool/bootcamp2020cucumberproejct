@@ -26,8 +26,8 @@
                     <threadCount>2</threadCount>
                     <forkMode>perthread</forkMode>
                     <includes>
-                        <include>**/CukesRunner.java</include>
-                        <include>**/CukesRunner2.java</include>
+                        <include>**/*CukesRunner.java</include>
+                        <include>**/*CukesRunner2.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
