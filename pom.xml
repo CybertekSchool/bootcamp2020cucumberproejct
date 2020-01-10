@@ -7,54 +7,61 @@
     <groupId>org.example</groupId>
     <artifactId>CucumberParallelTestingDemo</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M3</version>
-                <configuration>
-                    <parallel>classes</parallel>
-                    <threadCount>2</threadCount>
-                    <forkMode>perthread</forkMode>
-                    <includes>
-                        <include>**/*CukesRunner*.java</include>
-                    </includes>
-                    <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>4.9.0</version>
-                <executions>
-                    <execution>
-                        <id>execution</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>Cucumber HTML Reports</projectName>
-                            <outputDirectory>${project.build.directory}</outputDirectory>
-                            <inputDirectory>${project.build.directory}</inputDirectory>
-                            <jsonFiles>
-                                <param>**/cucumber*.json</param>
-                            </jsonFiles>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+        <profiles>
+            <profile>
+                <id>Regression</id>
+                <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <configuration>
+                                <source>8</source>
+                                <target>8</target>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>3.0.0-M3</version>
+                            <configuration>
+                                <parallel>classes</parallel>
+                                <threadCount>2</threadCount>
+                                <forkMode>perthread</forkMode>
+                                <includes>
+                                    <include>**/*CukesRunner*.java</include>
+                                </includes>
+                                <testFailureIgnore>true</testFailureIgnore>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>net.masterthought</groupId>
+                            <artifactId>maven-cucumber-reporting</artifactId>
+                            <version>4.9.0</version>
+                            <executions>
+                                <execution>
+                                    <id>execution</id>
+                                    <phase>verify</phase>
+                                    <goals>
+                                        <goal>generate</goal>
+                                    </goals>
+                                    <configuration>
+                                        <projectName>Cucumber HTML Reports</projectName>
+                                        <outputDirectory>${project.build.directory}</outputDirectory>
+                                        <inputDirectory>${project.build.directory}</inputDirectory>
+                                        <jsonFiles>
+                                            <param>**/cucumber*.json</param>
+                                        </jsonFiles>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </build>
+            </profile>
+        </profiles>
+
+
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
