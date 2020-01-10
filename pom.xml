@@ -26,11 +26,32 @@
                     <threadCount>2</threadCount>
                     <forkMode>perthread</forkMode>
                     <includes>
-                        <include>**/*CukesRunner.java</include>
-                        <include>**/*CukesRunner2.java</include>
+                        <include>**/*CukesRunner*.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>4.9.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>Cucumber HTML Reports</projectName>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <inputDirectory>${project.build.directory}</inputDirectory>
+                            <jsonFiles>
+                                <param>**/cucumber*.json</param>
+                            </jsonFiles>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
