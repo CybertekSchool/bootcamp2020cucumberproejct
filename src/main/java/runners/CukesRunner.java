@@ -7,7 +7,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         glue = "step_definitions",
-        features = "src/main/resources/features"
+        features = "src/main/resources/features",
+        tags = "@view_orders",
+        dryRun = true
 )
 public class CukesRunner {
 }
