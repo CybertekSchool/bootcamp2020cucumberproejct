@@ -1,4 +1,4 @@
 package pages;
 
-public class OrderPage {
+public class OrderPage extends BasePage{
 }
