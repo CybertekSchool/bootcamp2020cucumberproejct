@@ -12,7 +12,7 @@ public class LoginPage extends BasePage {
     @FindBy(id = "ctl00_MainContent_password")
     public WebElement passwordInputBoxElement;
 
-    public void login(String username, String password) {
+    public void login(String username, String password){
         userNameInputBoxElement.sendKeys(username);
         passwordInputBoxElement.sendKeys(password, Keys.ENTER);
     }
